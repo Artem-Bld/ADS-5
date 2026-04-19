@@ -5,10 +5,11 @@
 
 template<typename T, int MAX_SIZE>
 class TStack {
-private:
+private: 
     T data[MAX_SIZE];
     int topIndex;
-public:
+
+public: 
     TStack() : topIndex(-1) {}
     bool isEmpty() const {
         return topIndex == -1;
