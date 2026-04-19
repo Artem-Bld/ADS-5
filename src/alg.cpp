@@ -28,11 +28,9 @@ std::string infx2pstfx(const std::string& inf) {
       }
       result += ' ';
        --i;
-    }
-    else if (c == '(') {
+    } else if (c == '(') {
       stack.push(c);
-    }
-    else if (c == ')') {
+    } else if (c == ')') {
       while (!stack.isEmpty() && stack.top() != '(') {
         result += stack.pop();
         result += ' ';
@@ -40,8 +38,7 @@ std::string infx2pstfx(const std::string& inf) {
       if (!stack.isEmpty()) {
         stack.pop();
       }
-    }
-    else if (isOperator(c)) {
+    } else if (isOperator(c)) {
       while (!stack.isEmpty() && stack.top() != '(' &&
         getPrecedence(stack.top()) >= getPrecedence(c)) {
         result += stack.pop();
@@ -75,8 +72,7 @@ int eval(const std::string& post) {
       }
       stack.push(num);
       --i;
-    }
-    else if (isOperator(c)) {
+    } else if (isOperator(c)) {
       int b = stack.pop();
       int a = stack.pop();
       switch (c) {
