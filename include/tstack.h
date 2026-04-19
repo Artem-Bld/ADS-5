@@ -5,36 +5,36 @@
 
 template<typename T, int MAX_SIZE>
 class TStack {
-private: 
-    T data[MAX_SIZE];
-    int topIndex;
+private:
+  T data[MAX_SIZE];
+  int topIndex;
 
-public: 
-    TStack() : topIndex(-1) {}
-    bool isEmpty() const {
-        return topIndex == -1;
+public:
+  TStack() : topIndex(-1) {}
+  bool isEmpty() const {
+    return topIndex == -1;
+  }
+  bool isFull() const {
+    return topIndex == MAX_SIZE - 1;
+  }
+  void push(const T& value) {
+    if (isFull()) {
+        throw std::overflow_error("Stack overflow");
     }
-    bool isFull() const {
-        return topIndex == MAX_SIZE - 1;
+    data[++topIndex] = value;
+  }
+  T pop() {
+    if (isEmpty()) {
+        throw std::underflow_error("Stack underflow");
     }
-    void push(const T& value) {
-        if (isFull()) {
-            throw std::overflow_error("Stack overflow");
-        }
-        data[++topIndex] = value;
-    }
-    T pop() {
-        if (isEmpty()) {
-            throw std::underflow_error("Stack underflow");
-        }
-        return data[topIndex--];
-    }
-    T top() const {
-        if (isEmpty()) {
-            throw std::underflow_error("Stack is empty");
-        }
-        return data[topIndex];
-    }
+    return data[topIndex--];
+  }
+  T top() const {
+      if (isEmpty()) {
+        throw std::underflow_error("Stack is empty");
+      }
+    return data[topIndex];
+  }
 };
 
 #endif  // INCLUDE_TSTACK_H_
